@@ -1,0 +1,169 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* BODY STYLES */
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* HEADER STYLES */
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  border-bottom: solid 1px lightgray;
+  padding: 0.5rem 0;
+}
+
+header>h1 {
+  font-size: 2.5rem;
+}
+
+/* MAIN STYLES */
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 5rem);
+}
+
+.mainWords {
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+  gap: .4rem;
+}
+
+.row {
+  display: flex;
+  gap: .4rem;
+}
+
+.box {
+  width: 3.5rem;
+  height: 3.5rem;
+  border: solid 2px lightgrey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected {
+  border: solid 2px grey;
+}
+
+.wrong {
+  background-color: grey;
+  border: solid 2px grey;
+  color: white;
+}
+
+.wrong>p {
+  color: white;
+}
+
+.correct {
+  background-color: green;
+  border: solid 2px green;
+  color: white;
+}
+
+.correct>p {
+  color: white;
+}
+
+.misplaced {
+  background-color: rgb(208, 208, 0);
+  border: solid 2px rgb(208, 208, 0);
+  color: white;
+}
+.misplaced>p {
+  color: white;
+}
+
+.box>p {
+  font-size: 2.25rem;
+}
+
+
+
+
+
+.mainKeys {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  margin-top: auto;
+}
+
+.keys {
+  display: flex;
+  gap: .5rem;
+}
+
+.key {
+  width: 2.5rem;
+  height: 3.75rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+}
+
+#ENTER, #BACK {
+  width: 5rem;
+}
