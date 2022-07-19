@@ -3,7 +3,26 @@ const GameBoard = (() => {
   let currentRow = 1;
   let currentIndex = 1;
   let currentWord = '';
-  let answer = "HELLO";
+  let answer = '';
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '6f8f5abfa2mshc3a6db73b8ccd9bp126fd2jsnd8366ac803ff',
+      'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
+    }
+  };
+  
+  function setGame() {
+    fetch('https://wordsapiv1.p.rapidapi.com/words/?random=true&letters=5', options)
+    .then(response => response.json())
+    .then(response => {
+      answer = response.word.toUpperCase();
+      console.log(`Answer: ${answer}`);
+    })
+    .catch(err => console.error(err));
+
+    setKeys();
+  }
 
   function setKeys() {
     const keys = document.querySelectorAll('.key');
@@ -12,6 +31,15 @@ const GameBoard = (() => {
         pressButton(key.id);
       });
     })
+    document.addEventListener('keydown', (e) => {
+      if (/Key\w/.test(e.code)) {
+        pressButton(e.code[3]);
+      } else if (e.code == 'Backspace') {
+        pressButton('DEL');
+      } else if (e.code == 'Enter') {
+        pressButton('ENTER');
+      }
+    });
   }
 
   function pressButton(id) {
@@ -54,11 +82,7 @@ const GameBoard = (() => {
     }
   }
 
-
-
-  setKeys();
-
-  return {};
+  return {setGame};
 
 })();
 
@@ -146,3 +170,6 @@ const DisplayController = (() => {
 })();
 
 DisplayController.displayBoard();
+GameBoard.setGame();
+
+// 'https://wordsapiv1.p.mashape.com/words/?random=true&letters=5'
