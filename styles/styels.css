@@ -166,7 +166,8 @@ main {
 }
 
 .key {
-  width: 2.5rem;
+  width: 7vw;
+  max-width: 2.5rem;
   height: 3.75rem;
   font-weight: 600;
   border: none;
@@ -174,6 +175,7 @@ main {
   /* background-color: var(--lightgrey-color); */
 }
 
-#ENTER, #BACK {
-  width: 5rem;
+#ENTER, #DEL {
+  width: 15vw;
+  max-width: 5rem;
 }
