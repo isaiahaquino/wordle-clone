@@ -4,6 +4,7 @@ const GameBoard = (() => {
   let currentIndex = 1;
   let rowComplete = false;
   let currentWord = '';
+  let answer = "HELLO";
 
   function setKeys() {
     const keys = document.querySelectorAll('.key');
@@ -17,10 +18,13 @@ const GameBoard = (() => {
   function pressButton(id) {
     if (rowComplete && id == 'ENTER') {
       // TODO: Check word that was entered
-    }
-    else if (id == 'DEL') {
+      if (currentWord == answer) {
+        // TODO: CORRECT
+      } else {
+        // TODO: SUBMIT WORD
+      }
+    } else if (id == 'DEL') {
       if (currentIndex > 1) {
-        console.log('deleting')
         if (currentIndex == 1) {
           return;
         }
@@ -29,7 +33,6 @@ const GameBoard = (() => {
         currentIndex--;
         DisplayController.refreshWord(currentRow, currentWord);
       }
-
     } else {
       if (currentIndex == 6) {
         return;
@@ -39,7 +42,6 @@ const GameBoard = (() => {
       currentIndex++;
       DisplayController.refreshWord(currentRow, currentWord);
     }
-    console.log(currentWord);
   }
 
 
@@ -70,15 +72,20 @@ const DisplayController = (() => {
     for (var i=0; i<5; i++) {
       const text = document.createElement('p');
       text.innerHTML = word[i];
-      if (word[i] == null) {
+
+      if (word[i] == undefined) {
         text.innerHTML = '';
+        boxes[i].classList.remove('selected');
       }
 
-      while (boxes[i].firstChild) {
+      if (boxes[i].firstChild) {
         boxes[i].removeChild(boxes[i].firstChild);
       }
 
       boxes[i].appendChild(text);
+      if (text.innerHTML != '') {
+        boxes[i].classList.add('selected');
+      }
 
     }
   }
