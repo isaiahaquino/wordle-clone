@@ -108,21 +108,26 @@ const DisplayController = (() => {
 
       for (let i=0; i<5; i++) {
         let letterInWord = false;
+        const key = document.querySelector(`#${word[i]}`);
         for (let j=0; j<5; j++) {
           if (word[i] == answer[j] && i == j) {
             // word[i] is in the corect spot
             boxes[i].classList.add('correct');
             boxes[i].classList.remove('misplaced');
+            key.classList.add('correct');
+            key.classList.remove('missplaced');
             letterInWord = true;
             break;
           } else if (word[i] == answer[j] && i != j) {
             // word[i] is in word, but not in right spot
             boxes[i].classList.add('misplaced');
+            key.classList.add('misplaced');
             letterInWord = true
           }
           if (!letterInWord && j == 4) {
             // word[i] is not in answer
             boxes[i].classList.add('wrong');
+            key.classList.add('wrong');
           }
         }
       }
