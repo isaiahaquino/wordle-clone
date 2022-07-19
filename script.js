@@ -2,7 +2,6 @@ const GameBoard = (() => {
 
   let currentRow = 1;
   let currentIndex = 1;
-  let rowComplete = false;
   let currentWord = '';
   let answer = "HELLO";
 
@@ -16,12 +15,23 @@ const GameBoard = (() => {
   }
 
   function pressButton(id) {
-    if (rowComplete && id == 'ENTER') {
+    if (currentIndex == 6 && id == 'ENTER') {
+      console.log('checking word..')
       // TODO: Check word that was entered
       if (currentWord == answer) {
         // TODO: CORRECT
+        DisplayController.submitWord(answer, currentWord, currentRow);
+        DisplayController.win();
       } else {
-        // TODO: SUBMIT WORD
+        // SUBMIT WORD
+        DisplayController.submitWord(answer, currentWord, currentRow);
+        currentIndex = 1;
+        currentWord = '';
+        currentRow++;
+        if (currentRow == 7) {
+          // TODO: YOU LOSE
+          DisplayController.lose();
+        }
       }
     } else if (id == 'DEL') {
       if (currentIndex > 1) {
@@ -65,9 +75,13 @@ const DisplayController = (() => {
     });
   }
 
-  function refreshWord(row, word) {
+  function getRow(row) {
     const rowID = 'row'.concat(row);
-    const boxes = document.querySelector(`#${rowID}`).childNodes;
+    return document.querySelector(`#${rowID}`).childNodes;
+  }
+
+  function refreshWord(row, word) {
+    const boxes = getRow(row);
 
     for (var i=0; i<5; i++) {
       const text = document.createElement('p');
@@ -86,11 +100,43 @@ const DisplayController = (() => {
       if (text.innerHTML != '') {
         boxes[i].classList.add('selected');
       }
-
     }
   }
 
-  return {displayBoard, refreshWord};
+    function submitWord(answer, word, row) {
+      const boxes = getRow(row);
+
+      for (let i=0; i<5; i++) {
+        let letterInWord = false;
+        for (let j=0; j<5; j++) {
+          if (word[i] == answer[j] && i == j) {
+            // word[i] is in the corect spot
+            boxes[i].classList.add('correct');
+            boxes[i].classList.remove('misplaced');
+            letterInWord = true;
+            break;
+          } else if (word[i] == answer[j] && i != j) {
+            // word[i] is in word, but not in right spot
+            boxes[i].classList.add('misplaced');
+            letterInWord = true
+          }
+          if (!letterInWord && j == 4) {
+            // word[i] is not in answer
+            boxes[i].classList.add('wrong');
+          }
+        }
+      }
+    }
+
+    function win() {
+      console.log("You win!");
+    }
+
+    function lose() {
+      console.log("You lose!");
+    }
+
+  return { displayBoard, refreshWord, submitWord, win, lose };
 
 })();
 
