@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/styels.css">
+  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="./styles/styles-700.css" media="screen and (min-width: 700px)">
   <title>Wordle-Clone</title>
 </head>
 <body>
@@ -25,7 +26,7 @@
     </div>
 
     <div class="mainEndPopup">
-      <button type="button" id="close">X</button>
+      <button type="button" class="close" id="endClose">X</button>
       <div id="win" class="popupGreet">
         <h1>Impressive!</h1>
       </div>
@@ -37,6 +38,7 @@
     </div>
 
     <div class="mainHelp">
+      <button type="button" class="close" id="helpClose">X</button>
       <div class="helpHow">
         <h1>HOW TO PLAY</h1>
         <p>Guess the <b>WORDLE</b> in six tries.</p>
@@ -51,7 +53,6 @@
         <p>The letter <b>I</b> is in the word but in the wrong spot.</p>
         <div class="rowHelp"><div class="box selected"><p>V</p></div><div class="box selected"><p>A</p></div><div class="box selected"><p>G</p></div><div class="box selected wrong helpFlip"><p>U</p></div><div class="box selected"><p>E</p></div></div>
         <p>The letter <b>U</b> is not in the word in any spot.</p>
-
       </div>
     </div>
     
@@ -97,6 +98,5 @@
 
   </footer>
   <script src="script.js"></script>
-  <script src="animations.js"></script>
 </body>
 </html>

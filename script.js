@@ -45,9 +45,10 @@ const GameBoard = (() => {
     });
 
     const popup = document.querySelector('.mainEndPopup');
-    document.querySelector('#close').addEventListener('click', () => {
+    document.querySelector('#endClose').addEventListener('click', () => {
       popup.style.display = 'none';
     });
+  
 
     document.querySelector('#resetBtn').addEventListener('click', () => {
       popup.style.display = 'none';
@@ -76,6 +77,9 @@ const GameBoard = (() => {
       } else {
         help.style.display = 'none';
       }
+    });
+    document.querySelector('#helpClose').addEventListener('click', () => {
+      help.style.display = 'none';
     });
   }
 

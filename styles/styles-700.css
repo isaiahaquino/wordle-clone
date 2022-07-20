@@ -1,0 +1,7 @@
+.mainHelp {
+  bottom: calc((100vh - 500px) / 2);
+}
+
+.mainEndPopup {
+  bottom: calc((100vh - 40rem) / 2);
+}

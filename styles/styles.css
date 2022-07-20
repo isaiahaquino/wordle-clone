@@ -162,11 +162,11 @@ main {
   max-width: 30rem;
   height: 100vh;
   max-height: 40rem;
-  top: 3.5rem;
-  box-shadow: 0 0 5px 5px whitesmoke;
+  bottom: 0;
+  box-shadow: 0 0 10px 10px whitesmoke;
   background-color: white;
   border-radius: 1rem;
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -187,11 +187,11 @@ main {
   display: none;
 }
 
-#close {
-  top: 1rem;
-  right: 1rem;
+.close {
+  top: .75rem;
+  right: .75rem;
   position: absolute;
-  font-size: 2rem;
+  font-size: 1.25rem;
   background-color: white;
   border: none;
 }
@@ -210,13 +210,11 @@ main {
   position: absolute;
   width: calc(100vw - 1.5rem);
   max-width: 30rem;
-  height: 100vh;
-  max-height: 40rem;
-  top: 3.5rem;
-  box-shadow: 0 0 5px 5px whitesmoke;
+  bottom: 0;
+  box-shadow: 0 0 10px 10px whitesmoke;
   background-color: white;
   border-radius: 1rem;
-  display: flex;
+  display: none;
   flex-direction: column;
   padding: .75rem;
 }
@@ -236,7 +234,7 @@ main {
   font-weight: 600;
 }
 
-.helpHow {
+.helpHow, .helpExamples {
   border-bottom: solid 1px lightgray;
   gap: .75rem;
   padding-bottom: 1rem;
@@ -248,9 +246,7 @@ main {
   font-weight: 600;
 }
 
-.helpExamples {
-  gap: .75rem;
-}
+
 
 .helpExamples h2 {
   font-weight: 600;
