@@ -9,7 +9,9 @@
 </head>
 <body>
   <header>
+    <img class="headerBtn" id="helpBtn" src="./photos/help-circle-outline.png">
     <h1>Wordle Clone</h1>
+    <img class="headerBtn" id="statBtn" src="./photos/chart-box.png">
   </header>
 
   <main>
@@ -20,7 +22,18 @@
       <div id="row4" class="row"></div>
       <div id="row5" class="row"></div>
       <div id="row6" class="row"></div>
+    </div>
 
+    <div class="mainEndPopup">
+      <button type="button" id="close">X</button>
+      <div id="win" class="popupGreet">
+        <h1>Impressive!</h1>
+      </div>
+      <div id="lose" class="popupGreet">
+        <h1>Better luck next time!</h1>
+        <h2 id="popupAnswer">Word: </h2>
+      </div>
+      <button type="button" id="resetBtn">PLAY AGAIN</button>
     </div>
     
     <div class="mainKeys">

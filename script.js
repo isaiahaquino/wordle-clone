@@ -17,6 +17,8 @@ const GameBoard = (() => {
     .then(response => response.json())
     .then(response => {
       answer = response.word.toUpperCase();
+      const pop = document.querySelector('#popupAnswer');
+      pop.innerHTML = pop.innerHTML.concat(answer);
       console.log(`Answer: ${answer}`);
     })
     .catch(err => console.error(err));
@@ -31,6 +33,7 @@ const GameBoard = (() => {
         pressButton(key.id);
       });
     })
+
     document.addEventListener('keydown', (e) => {
       if (/Key\w/.test(e.code)) {
         pressButton(e.code[3]);
@@ -40,6 +43,21 @@ const GameBoard = (() => {
         pressButton('ENTER');
       }
     });
+
+    const popup = document.querySelector('.mainEndPopup');
+    const close = document.querySelector('#close');
+    close.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    const restart = document.querySelector('#resetBtn');
+    restart.addEventListener('click', () => {
+      popup.style.display = 'none';
+      const greet = document.querySelectorAll('.popupGreet');
+      greet.forEach(h1 => h1.style.display = 'none')
+      document.querySelector('#popupAnswer').innerHTML = 'Word: ';
+      restart();
+    })
   }
 
   function pressButton(id) {
@@ -80,6 +98,10 @@ const GameBoard = (() => {
       currentIndex++;
       DisplayController.refreshWord(currentRow, currentWord);
     }
+  }
+
+  function restart() {
+
   }
 
   return {setGame};
@@ -139,7 +161,7 @@ const DisplayController = (() => {
             boxes[i].classList.add('correct');
             boxes[i].classList.remove('misplaced');
             key.classList.add('correct');
-            key.classList.remove('missplaced');
+            key.classList.remove('misplaced');
             letterInWord = true;
             break;
           } else if (word[i] == answer[j] && i != j) {
@@ -159,10 +181,15 @@ const DisplayController = (() => {
 
     function win() {
       console.log("You win!");
+      document.querySelector('.mainEndPopup').style.display = 'flex';
+      document.querySelector('#win').style.display = 'block';
+
     }
 
     function lose() {
       console.log("You lose!");
+      document.querySelector('.mainEndPopup').style.display = 'flex';
+      document.querySelector('#lose').style.display = 'block';
     }
 
   return { displayBoard, refreshWord, submitWord, win, lose };
@@ -172,4 +199,3 @@ const DisplayController = (() => {
 DisplayController.displayBoard();
 GameBoard.setGame();
 
-// 'https://wordsapiv1.p.mashape.com/words/?random=true&letters=5'

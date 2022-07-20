@@ -66,8 +66,8 @@ body {
 
 header {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   width: 100vw;
   border-bottom: solid 1px var(--lightgrey-color);
   padding: 0.4rem 0;
@@ -76,6 +76,12 @@ header {
 header>h1 {
   font-size: 2rem;
   font-weight: 600;
+}
+
+.headerBtn {
+  height: 2rem;
+  width: 2rem;
+  margin: 0 .5rem;
 }
 
 /* MAIN STYLES */
@@ -145,12 +151,61 @@ main {
 }
 
 .box>p {
-  font-size: 2.25rem;
+  font-size: 1.75rem;
+}
+
+/* MAIN ENDING POPUP STYLES */
+
+.mainEndPopup {
+  position: absolute;
+  width: 100vw;
+  max-width: 30rem;
+  height: 100vh;
+  max-height: 40rem;
+  top: 3.5rem;
+  box-shadow: 0 0 5px 5px whitesmoke;
+  background-color: white;
+  border-radius: 1rem;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.mainEndPopup h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.mainEndPopup h2 {
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+.popupGreet {
+  display: none;
+}
+
+#close {
+  top: 1rem;
+  right: 1rem;
+  position: absolute;
+  font-size: 2rem;
+  background-color: white;
+  border: none;
+}
+
+#resetBtn {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: .5rem;
 }
 
 
-
-
+/* MAIN KEYS STYLES */
 
 .mainKeys {
   display: flex;
@@ -166,9 +221,9 @@ main {
 }
 
 .key {
-  width: 7vw;
+  width: 7.75vw;
   max-width: 2.5rem;
-  height: 3.75rem;
+  height: 3.6rem;
   font-weight: 600;
   border: none;
   border-radius: 5px;
@@ -176,6 +231,7 @@ main {
 }
 
 #ENTER, #DEL {
-  width: 15vw;
-  max-width: 5rem;
+  width: 13vw;
+  max-width: 4.25rem;
+  font-size: .7rem;
 }
