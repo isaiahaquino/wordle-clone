@@ -45,19 +45,24 @@ const GameBoard = (() => {
     });
 
     const popup = document.querySelector('.mainEndPopup');
-    const close = document.querySelector('#close');
-    close.addEventListener('click', () => {
+    document.querySelector('#close').addEventListener('click', () => {
       popup.style.display = 'none';
     });
 
-    const restart = document.querySelector('#resetBtn');
-    restart.addEventListener('click', () => {
+    document.querySelector('#resetBtn').addEventListener('click', () => {
       popup.style.display = 'none';
-      const greet = document.querySelectorAll('.popupGreet');
-      greet.forEach(h1 => h1.style.display = 'none')
+      document.querySelectorAll('.popupGreet').forEach(h1 => h1.style.display = 'none');
       document.querySelector('#popupAnswer').innerHTML = 'Word: ';
       restart();
-    })
+    });
+
+    document.querySelector('#statBtn').addEventListener('click', () => {
+      if (popup.style.display == 'none') {
+        popup.style.display = 'flex';
+      } else {
+        popup.style.display = 'none';
+      }
+    });
   }
 
   function pressButton(id) {
