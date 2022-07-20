@@ -35,6 +35,25 @@
       </div>
       <button type="button" id="resetBtn">PLAY AGAIN</button>
     </div>
+
+    <div class="mainHelp">
+      <div class="helpHow">
+        <h1>HOW TO PLAY</h1>
+        <p>Guess the <b>WORDLE</b> in six tries.</p>
+        <p>Each guess must be a valid five-letter word. Hit the enter button to submit.</p>
+        <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
+      </div>
+      <div class="helpExamples">
+        <h2>Examples</h2>
+        <div class="rowHelp"><div class="box selected correct helpFlip"><p>W</p></div><div class="box selected"><p>E</p></div><div class="box selected"><p>A</p></div><div class="box selected"><p>R</p></div><div class="box selected"><p>Y</p></div></div>
+        <p>The letter <b>W</b> is in the word and in the correct spot.</p>
+        <div class="rowHelp"><div class="box selected"><p>P</p></div><div class="box selected misplaced helpFlip"><p>I</p></div><div class="box selected"><p>L</p></div><div class="box selected"><p>L</p></div><div class="box selected"><p>S</p></div></div>
+        <p>The letter <b>I</b> is in the word but in the wrong spot.</p>
+        <div class="rowHelp"><div class="box selected"><p>V</p></div><div class="box selected"><p>A</p></div><div class="box selected"><p>G</p></div><div class="box selected wrong helpFlip"><p>U</p></div><div class="box selected"><p>E</p></div></div>
+        <p>The letter <b>U</b> is not in the word in any spot.</p>
+
+      </div>
+    </div>
     
     <div class="mainKeys">
       <div class="keys">
@@ -78,5 +97,6 @@
 
   </footer>
   <script src="script.js"></script>
+  <script src="animations.js"></script>
 </body>
 </html>

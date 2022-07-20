@@ -63,16 +63,30 @@ const GameBoard = (() => {
         popup.style.display = 'none';
       }
     });
+
+    const help = document.querySelector('.mainHelp');
+    document.querySelector('#helpBtn').addEventListener('click', () => {
+      if (help.style.display == 'none') {
+        help.style.display = 'flex';
+        setTimeout(() => {
+          document.querySelectorAll('.helpFlip').forEach((box) => {
+            DisplayController.flipAnimation(box, 0);
+          })
+        }, 0);
+      } else {
+        help.style.display = 'none';
+      }
+    });
   }
 
   function pressButton(id) {
     if (currentIndex == 6 && id == 'ENTER') {
       console.log('checking word..')
-      // TODO: Check word that was entered
+      // Check word that was entered
       if (currentWord == answer) {
-        // TODO: CORRECT
+        // CORRECT
         DisplayController.submitWord(answer, currentWord, currentRow);
-        DisplayController.win();
+        setTimeout(() => DisplayController.win(), 4000);
       } else {
         // SUBMIT WORD
         DisplayController.submitWord(answer, currentWord, currentRow);
@@ -80,8 +94,8 @@ const GameBoard = (() => {
         currentWord = '';
         currentRow++;
         if (currentRow == 7) {
-          // TODO: YOU LOSE
-          DisplayController.lose();
+          // YOU LOSE
+          setTimeout(() => DisplayController.lose(), 4000);
         }
       }
     } else if (id == 'DEL') {
@@ -159,26 +173,36 @@ const DisplayController = (() => {
 
       for (let i=0; i<5; i++) {
         let letterInWord = false;
+        let delay = i*500;
         const key = document.querySelector(`#${word[i]}`);
         for (let j=0; j<5; j++) {
           if (word[i] == answer[j] && i == j) {
             // word[i] is in the corect spot
-            boxes[i].classList.add('correct');
-            boxes[i].classList.remove('misplaced');
-            key.classList.add('correct');
-            key.classList.remove('misplaced');
-            letterInWord = true;
-            break;
+            setTimeout(() => {
+              boxes[i].classList.add('correct');
+              boxes[i].classList.remove('misplaced');
+              key.classList.add('correct');
+              key.classList.remove('misplaced');
+              letterInWord = true;
+              flipAnimation(boxes[i], delay);
+            }, delay);
+            if (i == j) { break; }
           } else if (word[i] == answer[j] && i != j) {
             // word[i] is in word, but not in right spot
-            boxes[i].classList.add('misplaced');
-            key.classList.add('misplaced');
-            letterInWord = true
+            setTimeout(() => {
+              boxes[i].classList.add('misplaced');
+              key.classList.add('misplaced');
+              letterInWord = true
+              flipAnimation(boxes[i], delay);
+            }, delay);
           }
           if (!letterInWord && j == 4) {
             // word[i] is not in answer
-            boxes[i].classList.add('wrong');
-            key.classList.add('wrong');
+            setTimeout(() => {
+              boxes[i].classList.add('wrong');
+              key.classList.add('wrong');
+              flipAnimation(boxes[i], delay);
+            }, delay);
           }
         }
       }
@@ -197,7 +221,12 @@ const DisplayController = (() => {
       document.querySelector('#lose').style.display = 'block';
     }
 
-  return { displayBoard, refreshWord, submitWord, win, lose };
+    function flipAnimation(box, delay) {
+      box.classList.toggle('clickSpin');
+      setTimeout(() => {box.classList.toggle('clickSpin');}, 500+delay);
+    }
+
+  return { displayBoard, refreshWord, submitWord, win, lose, flipAnimation };
 
 })();
 

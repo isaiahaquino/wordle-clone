@@ -100,7 +100,7 @@ main {
   gap: .4rem;
 }
 
-.row {
+.row, .rowHelp {
   display: flex;
   gap: .4rem;
 }
@@ -204,6 +204,64 @@ main {
   border-radius: .5rem;
 }
 
+/* MAIN HELP POPUP */
+
+.mainHelp {
+  position: absolute;
+  width: calc(100vw - 1.5rem);
+  max-width: 30rem;
+  height: 100vh;
+  max-height: 40rem;
+  top: 3.5rem;
+  box-shadow: 0 0 5px 5px whitesmoke;
+  background-color: white;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: .75rem;
+}
+
+.rowHelp {
+  margin-top: 1rem;
+}
+
+.rowHelp .box {
+  width: 5vh;
+  height: 5vh;
+  max-width: 3rem;
+  max-height: 3rem;
+}
+
+.mainHelp b {
+  font-weight: 600;
+}
+
+.helpHow {
+  border-bottom: solid 1px lightgray;
+  gap: .75rem;
+  padding-bottom: 1rem;
+}
+
+.helpHow h1 {
+  align-self: center;
+  text-align: center;
+  font-weight: 600;
+}
+
+.helpExamples {
+  gap: .75rem;
+}
+
+.helpExamples h2 {
+  font-weight: 600;
+}
+
+.helpHow, .helpExamples {
+  display: flex;
+  flex-direction: column;
+  margin: .5rem;
+}
+
 
 /* MAIN KEYS STYLES */
 
@@ -234,4 +292,19 @@ main {
   width: 13vw;
   max-width: 4.25rem;
   font-size: .7rem;
+}
+
+/* ANIMATIONS */
+
+.clickSpin {
+  animation: spin .5s  ease-in-out 1 reverse;
+}
+
+@keyframes spin {
+  0% {
+      transform: perspective(100px) rotateX(0deg);
+  }
+  100% {
+      transform: perspective(100px) rotateX(180deg);
+  }
 }
