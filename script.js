@@ -12,7 +12,7 @@ const GameBoard = (() => {
     }
   };
   
-  function setGame() {
+  function fetchWord() {
     fetch('https://wordsapiv1.p.rapidapi.com/words/?random=true&letters=5', options)
     .then(response => response.json())
     .then(response => {
@@ -22,11 +22,9 @@ const GameBoard = (() => {
       console.log(`Answer: ${answer}`);
     })
     .catch(err => console.error(err));
-
-    setKeys();
   }
 
-  function setKeys() {
+  function setGame() {
     const keys = document.querySelectorAll('.key');
     keys.forEach((key) => {
       key.addEventListener('click', () => {
@@ -124,10 +122,15 @@ const GameBoard = (() => {
   }
 
   function restart() {
-
+    DisplayController.resetBoard();
+    DisplayController.displayBoard();
+    currentRow = 1;
+    currentIndex = 1;
+    currentWord = '';
+    fetchWord();
   }
 
-  return {setGame};
+  return { setGame, fetchWord };
 
 })();
 
@@ -142,6 +145,32 @@ const DisplayController = (() => {
         row.appendChild(box);
       }
     });
+  }
+
+  function resetBoard() {
+    // Reset mainWords
+    const rows = document.querySelectorAll('.row');
+    rows.forEach(row => {
+      while (row.firstChild) {
+        row.removeChild(row.firstChild);
+      }
+    })
+  
+
+    // TODO: Reset mainEndPopup
+    const popup = document.querySelectorAll('.popupGreet');
+    popup.forEach(pop => {
+      pop.style.display = 'none'
+    });
+
+    // TODO: Reset mainKeys
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => {
+      key.classList.remove('correct');
+      key.classList.remove('wrong');
+      key.classList.remove('misplaced');
+    });
+
   }
 
   function getRow(row) {
@@ -230,10 +259,11 @@ const DisplayController = (() => {
       setTimeout(() => {box.classList.toggle('clickSpin');}, 500+delay);
     }
 
-  return { displayBoard, refreshWord, submitWord, win, lose, flipAnimation };
+  return { displayBoard, refreshWord, submitWord, win, lose, flipAnimation, resetBoard };
 
 })();
 
 DisplayController.displayBoard();
+GameBoard.fetchWord();
 GameBoard.setGame();
 
