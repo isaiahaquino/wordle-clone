@@ -84,6 +84,10 @@ header>h1 {
   margin: 0 .5rem;
 }
 
+button {
+  color: black;
+}
+
 /* MAIN STYLES */
 
 main {
@@ -166,7 +170,7 @@ main {
   box-shadow: 0 0 10px 10px whitesmoke;
   background-color: white;
   border-radius: 1rem;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
