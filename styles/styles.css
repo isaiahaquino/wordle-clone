@@ -167,7 +167,7 @@ main {
   height: 100vh;
   max-height: 40rem;
   bottom: 0;
-  box-shadow: 0 0 10px 10px whitesmoke;
+  box-shadow: 0 0 10px 5px lightgray;
   background-color: white;
   border-radius: 1rem;
   display: none;
@@ -215,7 +215,7 @@ main {
   width: calc(100vw - 1.5rem);
   max-width: 30rem;
   bottom: 0;
-  box-shadow: 0 0 10px 10px whitesmoke;
+  box-shadow: 0 0 10px 5px lightgray;
   background-color: white;
   border-radius: 1rem;
   display: none;
@@ -238,10 +238,14 @@ main {
   font-weight: 600;
 }
 
-.helpHow, .helpExamples {
+.helpHow, .helpExamples, .helpCitation {
   border-bottom: solid 1px lightgray;
   gap: .75rem;
   padding-bottom: 1rem;
+}
+
+.helpCitation p {
+  text-align: center;
 }
 
 .helpHow h1 {
